@@ -1,0 +1,31 @@
+name: NEXUS KERNEL BUILD
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🦅 Clonar Repositorio
+      uses: actions/checkout@v4
+      
+    - name: ☕ Configurar Matriz Java 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        
+    - name: ⚙️ Destravar Motor Gradle
+      run: chmod +x gradlew
+      
+    - name: ⚡ Compilar Força Bruta (APK)
+      run: ./gradlew assembleDebug
+      
+    - name: 📦 Extrair Artefato (Download do App)
+      uses: actions/upload-artifact@v4
+      with:
+        name: NEXUS-APP-PRONTO
+        path: app/build/outputs/apk/debug/app-debug.apk
