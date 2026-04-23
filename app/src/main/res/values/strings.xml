@@ -1,0 +1,1 @@
+<resources>\n    <string name="app_name">NEXUS Factory</string>\n    <string name="button_sistema1">Sistema 1</string>\n    <string name="button_sistema2">Sistema 2</string>\n    <string name="button_sistema3">Sistema 3</string>\n    <string name="button_reset">Reset</string>\n</resources>
